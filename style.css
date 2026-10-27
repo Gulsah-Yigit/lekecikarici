@@ -389,3 +389,25 @@ dialog.rich-guide { max-width: 740px; max-height: 88svh; overflow-y: auto; overs
  .ingredient-comparison th, .ingredient-comparison td { padding: 14px; }
  .ingredient-note { align-items: flex-start; padding: 12px; }
 }
+
+/* Match the approved illustrated ingredient card layout. */
+.ingredient-art { height: 170px; }
+.ingredient-art::before { width: 158px; height: 158px; top: 6px; background-size: 474px 158px; }
+.ingredient-copy { padding: 12px 20px 22px; }
+.ingredient-title { display: flex; align-items: center; gap: 13px; min-height: 55px; }
+.ingredient-symbol { display: inline-flex; flex: 0 0 49px; width: 49px; height: 49px; align-items: center; justify-content: center; border-radius: 50%; background: #e5f1f1; color: var(--ink); }
+.ingredient-symbol svg { width: 28px; height: 28px; }
+.ingredient-title h3 { font-size: 19px; line-height: 1.35; }
+.ingredient-copy .ingredient-lead { margin: 5px 0 0 62px; font-size: 12px; color: var(--muted); }
+.ingredient-copy > p:not(.ingredient-lead) { margin-top: 17px; font-size: 12px; }
+.ingredient-row-label, .ingredient-column-label { display: flex; align-items: center; gap: 13px; }
+.ingredient-row-label .ingredient-symbol { width: 39px; height: 39px; flex-basis: 39px; }
+.ingredient-row-label .ingredient-symbol svg { width: 23px; height: 23px; }
+.ingredient-column-label > svg { width: 22px; height: 22px; flex-shrink: 0; }
+.ingredient-comparison th, .ingredient-comparison td { padding: 12px 18px; }
+@media (max-width: 760px) {
+ .ingredient-art { height: 160px; }
+ .ingredient-art::before { top: 1px; }
+ .ingredient-title h3 { font-size: 19px; }
+ .ingredient-copy > p:not(.ingredient-lead) { font-size: 13px; }
+}
