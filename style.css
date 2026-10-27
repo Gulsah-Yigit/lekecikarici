@@ -227,3 +227,22 @@ dialog.rich-guide { max-width: 740px; max-height: 88svh; overflow-y: auto; overs
   .surface-carousel-controls button:disabled { opacity: .35; cursor: default; }
   .surface-position { min-width: 40px; text-align: center; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
 }
+
+/* Readable, comfortably sized solution finder controls. */
+.findergrid > div > p { font-size: 15px; line-height: 1.75; max-width: 390px; }
+#finder { padding: 30px; }
+#finder .formtitle { font-size: 22px; line-height: 1.4; margin-bottom: 26px; }
+#finder .fields { gap: 18px; }
+#finder label { font-size: 14px; line-height: 1.5; margin-bottom: 20px; }
+#finder select { height: 52px; padding: 12px 14px; margin-top: 9px; font-size: 16px; line-height: 1.4; border-radius: 8px; }
+#finder > .primary { min-height: 54px; font-size: 16px; padding: 14px 18px; }
+#finder .formnote { font-size: 13px; line-height: 1.65; margin-top: 13px; }
+#finder #result { font-size: 14px; }
+#finder .result-link { font-size: 14px; padding: 13px 15px; }
+#finder .result-chip { font-size: 13px; padding: 7px 12px; }
+@media (max-width: 760px) {
+  #finder { padding: 24px 20px; }
+  #finder .formtitle { font-size: 20px; margin-bottom: 23px; }
+  #finder .fields { grid-template-columns: 1fr; gap: 0; }
+  #finder > .primary { font-size: 15px; }
+}
