@@ -120,8 +120,7 @@ function renderFinderRecommendation(surface, stain, age) {
    const message=surface==='Halı'?'Bakım iznini doğrulayana kadar temizleyici eklemeyin. Taze dökülmede fazlalığı beyaz, emici bir bezle dıştan içe tamponlayarak alın. Sulu temizlik yasaksa veya lif yapısı belirsizse uzman desteği alın.':care.value==='S'?'S kodunda su kullanmayın. Uygun susuz temizleme yöntemi için üreticiye veya uzmana danışın.':care.value==='X'?'X kodunda su veya sıvı temizleyici uygulamayın. Bakım talimatının izin verdiği kuru süpürme yöntemini kullanın; leke için uzman görüşü alın.':'Bakım kodu bilinmeden su veya deterjan uygulamayın. Taze dökülmenin fazlasını kuru, beyaz bir bezle nazikçe emdirin ve üreticiden bakım kodunu öğrenin.';
    panel.append(guideElement('p',message,'recipe-condition'));
   }
-  const refs=guideElement('div','','recipe-sources');
-  recipe.sources.filter(id=>!['shaw','oil'].includes(id)).forEach(id=>{const [title,url]=careSources[id];const a=guideElement('a',(id==='aci'||id==='pizza'?'ACI':id==='sofa'?'La-Z-Boy':id==='ikea'?'IKEA':id==='cri'?'CRI':'Shaw')+' ↗');a.href=url;a.target='_blank';a.rel='noopener noreferrer';refs.append(a);});panel.append(refs);
+
  }
  if(care)care.onchange=update;update();
 }
