@@ -98,10 +98,10 @@ function openSurfaceGuide(surface, initialStain = '') {
 function renderFinderRecommendation(surface, stain, age) {
  const root=$('#result');root.replaceChildren();root.hidden=false;
  const data=surfaceRecipes[surface], key=/Çay|Kahve/.test(stain)?'Çay / kahve':stain, recipe=data.recipes[key];
- root.append(guideElement('strong',stain+' · '+surface+' · '+age),guideElement('p',data.intro));
- if(age==='Daha önce işlem gördü')root.append(guideElement('p','Yeni bir ürün uygulamadan önce kullanılan ürünleri ve önceki işlemleri belirleyin. Temizleyicileri karıştırmayın. Önceki işlem bilinmiyorsa üreticiye veya uzmana danışın.','recipe-condition'));
- if(age==='Kurudu / bekledi')root.append(guideElement('p','Kurumuş lekeyi sertçe ovalamayın veya kazımayın. Ön işlem süresini ürün etiketine göre belirleyin; dozu artırmayın.','recipe-condition'));
- if(!recipe){root.append(guideElement('p','Bu leke ve yüzey eşleşmesi için henüz kaynak kontrolü tamamlanmış bir yöntem bulunmuyor. Başka bir lekeye ait tarifi uygulamak yerine, bu lekeye ve yüzeye uygunluğu belirtilmiş ürünün talimatını esas alın. Bakım bilgisi belirsizse uzman görüşü alın.'));return;}
+ root.append(guideElement('strong',stain+' · '+surface+' · '+age));
+ if(age==='Daha önce işlem gördü')root.append(guideElement('p','Önceki ürünü belirleyin; temizleyicileri karıştırmayın. İşlem bilinmiyorsa uzmana danışın.','recipe-condition'));
+ if(age==='Kurudu / bekledi')root.append(guideElement('p','Kurumuş lekeyi ovalamayın; ön işlem süresini etikete göre belirleyin, dozu artırmayın.','recipe-condition'));
+ if(!recipe){root.append(guideElement('p','Bu eşleşme için doğrulanmış bir yöntem henüz eklenmedi. Yüzeye ve lekeye uygun ürünün talimatını izleyin; bakım bilgisi belirsizse uzmana danışın.'));return;}
  let care;
  if(surface!=='Kıyafet'){
   const label=guideElement('label',surface==='Koltuk'?'Döşemenin bakım kodunu seçin':'Halının bakım talimatını seçin');care=document.createElement('select');
@@ -110,17 +110,18 @@ function renderFinderRecommendation(surface, stain, age) {
  }
  const panel=guideElement('div','','finder-recipe');root.append(panel);
  function update(){
-  panel.replaceChildren();panel.append(guideElement('h4',recipe.title));
+  panel.replaceChildren();
   const allowed=!care||['wet','W','WS'].includes(care.value);
   if(allowed){
-   panel.append(guideElement('p','Ürünün yüzeye uygunluğunu doğrulayın ve görünmeyen küçük bir alanda deneyin. Renk veya doku değişirse işlemi durdurun.'));
-   const list=guideElement('ol');recipe.steps.forEach(step=>list.append(guideElement('li',step)));panel.append(list,guideElement('h4','Uygun ürün seçimi'),guideElement('p',recipe.product),guideElement('p',recipe.note,'recipe-condition'));
+   const steps=surface==='Kıyafet' ? (key==='Yağ' ? ['Fazla yağı bezle alın.', 'Yıkanabilir giyside kumaşa uygun sıvı deterjan veya ön işlem ürünü uygulayın.', 'Bakım etiketine göre yıkayın; leke çıkmadan makinede kurutmayın.'] : ['Yıkanabilir giyside lekeyi serin suyla durulayın.', 'Kumaşa uygun ön işlem ürünü uygulayıp bakım etiketine göre yıkayın.', 'Leke çıkmadan kurutma makinesini kullanmayın.']) : surface==='Halı' ? ['Fazlalığı beyaz bezle dıştan içe tamponlayarak alın.', 'Bu halıya ve leke türüne uygun noktasal temizleyiciyi etiketine göre uygulayın.', 'Ürün talimatına göre kalıntıyı giderin; tabanı aşırı ıslatmayın.'] : ['Fazlalığı beyaz, emici bezle alın.', 'W kodunda su bazlı; W-S kodunda üreticinin onayladığı, lekeye uygun döşeme ürünü kullanın.', 'Ürünü beze az miktarda alıp tamponlayın; dolguyu ıslatmayın.'];
+   const list=guideElement('ol');steps.forEach(step=>list.append(guideElement('li',step)));panel.append(list);
+   panel.append(guideElement('p',surface==='Kıyafet'?'Bakım ve ürün etiketini esas alın; yün, ipek ve kuru temizleme isteyen giysiler için özel bakım gerekir.':'Önce görünmeyen alanda deneyin. Renk veya doku değişirse durdurun; hassas liflerde üretici talimatını esas alın.','recipe-condition'));
   }else{
    const message=surface==='Halı'?'Bakım iznini doğrulayana kadar temizleyici eklemeyin. Taze dökülmede fazlalığı beyaz, emici bir bezle dıştan içe tamponlayarak alın. Sulu temizlik yasaksa veya lif yapısı belirsizse uzman desteği alın.':care.value==='S'?'S kodunda su kullanmayın. Uygun susuz temizleme yöntemi için üreticiye veya uzmana danışın.':care.value==='X'?'X kodunda su veya sıvı temizleyici uygulamayın. Bakım talimatının izin verdiği kuru süpürme yöntemini kullanın; leke için uzman görüşü alın.':'Bakım kodu bilinmeden su veya deterjan uygulamayın. Taze dökülmenin fazlasını kuru, beyaz bir bezle nazikçe emdirin ve üreticiden bakım kodunu öğrenin.';
    panel.append(guideElement('p',message,'recipe-condition'));
   }
-  const refs=guideElement('div','','recipe-sources');refs.append(guideElement('h4','Kaynaklar'));
-  recipe.sources.forEach(id=>{const [title,url]=careSources[id];const a=guideElement('a',title+' ↗');a.href=url;a.target='_blank';a.rel='noopener noreferrer';refs.append(a);});panel.append(refs);
+  const refs=guideElement('div','','recipe-sources');
+  recipe.sources.forEach(id=>{const [title,url]=careSources[id];const a=guideElement('a',(id==='aci'||id==='pizza'?'ACI':id==='sofa'?'La-Z-Boy':id==='ikea'?'IKEA':id==='cri'?'CRI':'Shaw')+' ↗');a.href=url;a.target='_blank';a.rel='noopener noreferrer';refs.append(a);});panel.append(refs);
  }
  if(care)care.onchange=update;update();
 }
