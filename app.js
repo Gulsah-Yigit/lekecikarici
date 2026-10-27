@@ -14,9 +14,6 @@ document.querySelectorAll('[data-product]').forEach(b=>b.onclick=()=>openReading
 document.querySelectorAll('.close,.closebottom').forEach(b=>b.onclick=()=>dialog.close());dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close()}});
 
 document.querySelectorAll('[data-need]').forEach(b=>b.onclick=()=>openReading(b.dataset.need+' için seçim koşulları',[b.querySelector('p').textContent,'Bakım etiketi ve ürünün kullanım talimatı birlikte değerlendirilir. Yüzey için izin verilmeyen bir yöntem uygulanmaz.','Bu kategoriye özel ayrıntılı rehber, içerik aşamasında kaynaklarıyla hazırlanacak.']));
-const reviewMethod=()=>openReading('Ürün inceleme yöntemimiz',['İncelemelerde ürün adı ve çeşidi, denenen yüzey, lekenin türü ve bekleme süresi, kullanılan miktar ve uygulama süresi açıkça belirtilecek.','Başarılı ve başarısız sonuçlar birlikte gösterilecek. Test edilmeyen iddialar, üretici beyanı olarak ayrılacak.','Henüz yayınlanmış inceleme yok. Aşağıdaki marka adları planlanan içerik dosyalarıdır; denenmiş ürün, marka ortaklığı veya tavsiye anlamına gelmez.']);
-$('#reviewmethod').onclick=reviewMethod;
-document.querySelectorAll('[data-brand]').forEach(b=>b.onclick=()=>openReading(b.dataset.brand+' · planlanan marka dosyası',['Bu marka için henüz yayınlanmış inceleme veya hazır bir marka merkezi yok.','İnceleme tamamlandığında ürün bazındaki kullanım alanları, test koşulları ve sınırlamalar bu merkezde toplanacak.']));
 const trustCopy={
 'Editoryal yöntem':['Öneriler leke, yüzey, bakım talimatı ve önceki işlemler bağlamında yazılır. Her içerikte kapsam ve sınırlamalar açıklanır.'],
 'Yazar ve kontrol':['Bu tasarım sürümünde yazar veya uzman onayı iddiası bulunmuyor. İçerikler yayına alınırken gerçek yazarın adı, ilgili deneyimi, kontrol eden kişi ve güncelleme tarihi görünür olacak.'],

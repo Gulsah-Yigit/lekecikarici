@@ -348,3 +348,43 @@ dialog.rich-guide { max-width: 740px; max-height: 88svh; overflow-y: auto; overs
  .stain-editorial .guide h3 { font-size: 13px; padding-right: 0; }
  .stain-editorial .guide::after { right: 12px; bottom: 10px; font-size: 18px; }
 }
+
+/* Ingredient education and product-form comparison. */
+.ingredients-section { background: #e8eef4; padding: 58px 0; }
+.ingredients-heading { margin-bottom: 26px; }
+.ingredients-heading h2 { font-size: 34px; }
+.ingredients-heading > p { font-size: 14px; margin-top: 14px; }
+.ingredient-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 17px; }
+.ingredient-card { background: #ffffffed; border-radius: 12px; overflow: hidden; }
+.ingredient-art { height: 155px; background-image: url('assets/ingredient-illustrations.png'); background-size: 300% auto; background-repeat: no-repeat; }
+.ingredient-enzyme { background-position: left center; }
+.ingredient-oxygen { background-position: center center; }
+.ingredient-surfactant { background-position: right center; }
+.ingredient-copy { padding: 17px 21px 23px; }
+.ingredient-copy h3 { font-size: 19px; line-height: 1.4; }
+.ingredient-copy p { font-size: 12px; line-height: 1.7; margin-top: 11px; }
+.ingredient-copy .ingredient-lead { color: var(--accent); font-size: 12px; margin-top: 8px; }
+.ingredient-comparison { padding: 13px; margin-top: 17px; border-radius: 12px; background: #ffffffed; }
+.ingredient-table-scroll { overflow-x: auto; border: 1px solid #d9e4e8; border-radius: 8px; }
+.ingredient-comparison table { width: 100%; border-collapse: collapse; font-size: 12px; text-align: left; min-width: 640px; }
+.ingredient-comparison th, .ingredient-comparison td { padding: 15px 20px; border-bottom: 1px solid #d9e4e8; line-height: 1.6; }
+.ingredient-comparison thead { background: #ecf3f5; }
+.ingredient-comparison thead th { font-size: 11px; }
+.ingredient-comparison th:first-child { width: 17%; }
+.ingredient-comparison td { color: var(--muted); width: 41.5%; }
+.ingredient-comparison tbody tr:last-child > * { border-bottom: 0; }
+.ingredient-note { display: flex; align-items: center; gap: 12px; background: #eaf2f4; padding: 12px 16px; margin-top: 12px; border-radius: 7px; font-size: 11px; color: var(--ink); }
+.ingredient-note > span { font-size: 21px; }
+@media (max-width: 760px) {
+ .ingredients-section { padding: 42px 0; }
+ .ingredients-heading h2 { font-size: 28px; }
+ .ingredients-heading > p { font-size: 13px; }
+ .ingredient-grid { grid-template-columns: 1fr; gap: 14px; }
+ .ingredient-art { height: 155px; }
+ .ingredient-copy { padding: 15px 20px 21px; }
+ .ingredient-copy h3 { font-size: 19px; }
+ .ingredient-copy p { font-size: 13px; }
+ .ingredient-comparison { padding: 10px; }
+ .ingredient-comparison th, .ingredient-comparison td { padding: 14px; }
+ .ingredient-note { align-items: flex-start; padding: 12px; }
+}
