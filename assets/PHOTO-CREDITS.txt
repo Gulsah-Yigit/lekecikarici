@@ -12,3 +12,6 @@ https://www.pexels.com/photo/white-carpet-in-a-living-room-18266462/
 Kaynak sayfalar fotoğrafları ücretsiz kullanım için listeler.
 Lisans: https://www.pexels.com/license/
 İndirilen kopyalar 1000 px genişlikte, sıkıştırılmış JPEG sürümleridir.
+
+product-types-editorial.png — AI-generated with built-in imagegen, 2026-10-27. Unbranded editorial still life; illustrative product types.
+Prompt: Photorealistic editorial still life on a warm pale stone counter: trigger spray, ivory liquid detergent bottle with sage cap, glass powder jar with wooden scoop, soap bar, wipes pouch and stain pen; cream linen, sage cloth, blurred green plant, warm window light. No labels, logos or text.
