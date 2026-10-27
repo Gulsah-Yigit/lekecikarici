@@ -121,7 +121,7 @@ function renderFinderRecommendation(surface, stain, age) {
    panel.append(guideElement('p',message,'recipe-condition'));
   }
   const refs=guideElement('div','','recipe-sources');
-  recipe.sources.forEach(id=>{const [title,url]=careSources[id];const a=guideElement('a',(id==='aci'||id==='pizza'?'ACI':id==='sofa'?'La-Z-Boy':id==='ikea'?'IKEA':id==='cri'?'CRI':'Shaw')+' ↗');a.href=url;a.target='_blank';a.rel='noopener noreferrer';refs.append(a);});panel.append(refs);
+  recipe.sources.filter(id=>!['shaw','oil'].includes(id)).forEach(id=>{const [title,url]=careSources[id];const a=guideElement('a',(id==='aci'||id==='pizza'?'ACI':id==='sofa'?'La-Z-Boy':id==='ikea'?'IKEA':id==='cri'?'CRI':'Shaw')+' ↗');a.href=url;a.target='_blank';a.rel='noopener noreferrer';refs.append(a);});panel.append(refs);
  }
  if(care)care.onchange=update;update();
 }
