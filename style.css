@@ -246,3 +246,13 @@ dialog.rich-guide { max-width: 740px; max-height: 88svh; overflow-y: auto; overs
   #finder .fields { grid-template-columns: 1fr 1fr; gap: 12px; }
   #finder select { font-size: 16px; min-height: 44px; }
 }
+
+/* Inline recommendations and a plain close icon. */
+#reading > .close { display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; font: 30px/1 Arial, sans-serif; color: var(--ink); }
+#finder #result > label { margin-top: 18px; }
+#finder .finder-recipe h4 { font-size: 14px; margin: 18px 0 8px; line-height: 1.5; }
+#finder .finder-recipe p { margin-top: 10px; }
+#finder .finder-recipe ol { padding-left: 21px; margin: 14px 0; }
+#finder .finder-recipe li { margin: 9px 0; line-height: 1.7; }
+#finder .recipe-sources { margin-top: 18px; padding-top: 12px; border-top: 1px solid #c6d7c8; }
+#finder .recipe-sources a { display: block; font-size: 11px; margin-top: 5px; text-decoration: underline; text-underline-offset: 3px; }

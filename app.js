@@ -10,16 +10,7 @@ document.querySelectorAll('[data-fabric]').forEach(b=>b.onclick=()=>openReading(
 function search(q){render(q);$('#rehberler').scrollIntoView({behavior:'smooth'})}
 $('#search').onsubmit=e=>{e.preventDefault();search($('#search input').value)};document.querySelectorAll('[data-query]').forEach(b=>b.onclick=()=>{$('#search input').value=b.dataset.query;search(b.dataset.query)});
 document.querySelectorAll('[data-surface]').forEach(b=>b.onclick=()=>openSurfaceGuide(b.dataset.surface));
-$('#finder').onsubmit=e=>{
- e.preventDefault();const surface=$('#surface').value,stain=$('#stain').value,age=$('#age').value;
- const r=$('#result');r.replaceChildren();const h=document.createElement('strong');h.textContent=stain+' · '+surface+' · '+age;
- const p=document.createElement('p');p.textContent='İlk kontrol: '+(surface==='Kıyafet'?'giysinin bakım etiketi':surface==='Koltuk'?'döşemenin bakım kodu':'halının lif türü ve bakım talimatı')+'. '+(age==='Daha önce işlem gördü'?'Önceki ürün ve işlemleri belirle.':'Ürünün bu yüzeye uygunluğunu doğrula.');r.append(h,p);
- const guide=document.createElement('button');guide.className='result-link';guide.textContent=surface+' · '+stain+' lekesi rehberi ↗';guide.onclick=()=>openSurfaceGuide(surface,stain);guide.type='button';r.append(guide);
- const title=document.createElement('p');title.textContent='Değerlendirilecek ürün türleri';title.className='result-title';r.append(title);
- const types=surface==='Kıyafet'?['Sprey','Toz','Sıvı','Sabun']:['Sprey','Sıvı'];
- types.forEach(type=>{const b=document.createElement('button');b.type='button';b.className='result-chip';b.textContent=type+' ↗';b.onclick=()=>openReading(surface+' için '+type.toLocaleLowerCase('tr-TR')+' seçimi',['Yalnızca '+surface.toLocaleLowerCase('tr-TR')+' üzerinde kullanımına üreticisi tarafından izin verilen ürünleri değerlendir.','Biçim tek başına uygunluk anlamına gelmez. Ürün etiketi, kumaş yapısı ve bakım talimatı birlikte kontrol edilmelidir.']);r.append(b)});
- const note=document.createElement('p');note.className='formnote';note.textContent='Ürün türleri bir seçim başlangıcıdır; test edilmiş ürün önerisi değildir.';r.append(note);r.hidden=false;
-};
+$('#finder').onsubmit=e=>{e.preventDefault();renderFinderRecommendation($('#surface').value,$('#stain').value,$('#age').value);};
 document.querySelectorAll('[data-product]').forEach(b=>b.onclick=()=>openReading(b.querySelector('h3').textContent,['Bu ürün türünü seçerken yüzey uyumunu, uygulama biçimini ve üreticinin kullanım talimatını birlikte değerlendir.','Ürün bazında karşılaştırmalar ve deneyim notları içerik aşamasında eklenecek. Bu tasarımda ürünlere puan veya doğrulanmamış performans iddiası verilmiyor.']));
 document.querySelectorAll('.close,.closebottom').forEach(b=>b.onclick=()=>dialog.close());dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close()}});
 
