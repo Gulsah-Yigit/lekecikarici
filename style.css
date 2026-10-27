@@ -228,21 +228,21 @@ dialog.rich-guide { max-width: 740px; max-height: 88svh; overflow-y: auto; overs
   .surface-position { min-width: 40px; text-align: center; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
 }
 
-/* Readable, comfortably sized solution finder controls. */
-.findergrid > div > p { font-size: 15px; line-height: 1.75; max-width: 390px; }
-#finder { padding: 30px; }
-#finder .formtitle { font-size: 22px; line-height: 1.4; margin-bottom: 26px; }
-#finder .fields { gap: 18px; }
-#finder label { font-size: 14px; line-height: 1.5; margin-bottom: 20px; }
-#finder select { height: 52px; padding: 12px 14px; margin-top: 9px; font-size: 16px; line-height: 1.4; border-radius: 8px; }
-#finder > .primary { min-height: 54px; font-size: 16px; padding: 14px 18px; }
-#finder .formnote { font-size: 13px; line-height: 1.65; margin-top: 13px; }
-#finder #result { font-size: 14px; }
-#finder .result-link { font-size: 14px; padding: 13px 15px; }
-#finder .result-chip { font-size: 13px; padding: 7px 12px; }
+/* Slightly larger solution finder controls. */
+.findergrid > div > p { font-size: 13px; line-height: 1.7; max-width: 350px; }
+#finder { padding: 27px; }
+#finder .formtitle { font-size: 19px; line-height: 1.4; margin-bottom: 23px; }
+#finder .fields { gap: 14px; }
+#finder label { font-size: 12px; line-height: 1.5; margin-bottom: 16px; }
+#finder select { height: 42px; padding: 9px 11px; margin-top: 7px; font-size: 13px; line-height: 1.4; border-radius: 6px; }
+#finder > .primary { min-height: 46px; font-size: 13px; padding: 12px 16px; }
+#finder .formnote { font-size: 11px; line-height: 1.65; margin-top: 10px; }
+#finder #result { font-size: 12px; }
+#finder .result-link { font-size: 12px; padding: 11px 13px; }
+#finder .result-chip { font-size: 11px; padding: 6px 11px; }
 @media (max-width: 760px) {
-  #finder { padding: 24px 20px; }
-  #finder .formtitle { font-size: 20px; margin-bottom: 23px; }
-  #finder .fields { grid-template-columns: 1fr; gap: 0; }
-  #finder > .primary { font-size: 15px; }
+  #finder { padding: 22px 18px; }
+  #finder .formtitle { font-size: 17px; margin-bottom: 21px; }
+  #finder .fields { grid-template-columns: 1fr 1fr; gap: 12px; }
+  #finder select { font-size: 16px; min-height: 44px; }
 }
