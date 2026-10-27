@@ -266,3 +266,16 @@ dialog.rich-guide { max-width: 740px; max-height: 88svh; overflow-y: auto; overs
 #finder .recipe-sources { display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 10px; padding-top: 8px; }
 #finder .recipe-sources a { margin: 0; font-size: 10px; }
 @media (max-width: 760px) { .findergrid > div:first-child { padding-top: 0; } }
+
+/* Surface-based cleaner selection table. */
+.choice-section > .choice-table { width: 100%; }
+.choice-section .choice-table table { min-width: 650px; table-layout: fixed; font-size: 12px; }
+.choice-section .choice-table th, .choice-section .choice-table td { padding: 20px 22px; line-height: 1.7; }
+.choice-section .choice-table thead th { font-size: 11px; }
+.choice-section .choice-table th:first-child { width: 24%; }
+.choice-section .choice-table td { color: var(--ink); }
+.choice-section .choice-note { font-size: 11px; line-height: 1.7; margin-top: 15px; max-width: 850px; }
+@media (max-width: 760px) {
+  .choice-section .choice-table th, .choice-section .choice-table td { padding: 16px; }
+  .choice-section .choice-table table { min-width: 620px; }
+}
