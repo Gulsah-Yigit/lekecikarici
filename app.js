@@ -36,3 +36,42 @@ document.querySelectorAll('[data-trust]').forEach(b=>b.onclick=()=>openReading(b
 
 // Surface-card shortcuts open the relevant sourced guide directly.
 document.querySelectorAll(".surface-card [data-query]").forEach(b=>b.onclick=()=>openSurfaceGuide(b.closest(".surface-card").querySelector("[data-surface]").dataset.surface,b.dataset.query));
+
+// Native touch scrolling and optional buttons share the same mobile card position.
+(() => {
+  const track = $('#surface-carousel');
+  const cards = [...track.querySelectorAll('.surface-card')];
+  const prev = $('.surface-prev'), next = $('.surface-next'), counter = $('.surface-position');
+  const mobile = matchMedia('(max-width: 760px)');
+  let active = 0, frame = 0;
+  function sync() {
+    frame = 0;
+    const center = track.scrollLeft + track.clientWidth / 2;
+    active = cards.reduce((best,card,i) => Math.abs(card.offsetLeft + card.offsetWidth / 2 - center) < Math.abs(cards[best].offsetLeft + cards[best].offsetWidth / 2 - center) ? i : best, 0);
+    counter.textContent = `${active + 1} / ${cards.length}`;
+    prev.disabled = active === 0; next.disabled = active === cards.length - 1;
+  }
+  function go(index) {
+    if (!mobile.matches) return;
+    const card = cards[Math.max(0, Math.min(cards.length - 1, index))];
+    track.scrollTo({left: card.offsetLeft, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
+  }
+  function layout() {
+    track.setAttribute('role', 'region');
+    if (mobile.matches) {
+      track.tabIndex = 0; track.setAttribute('aria-roledescription', 'carousel');
+    } else {
+      track.removeAttribute('tabindex'); track.removeAttribute('aria-roledescription'); track.scrollLeft = 0;
+    }
+    sync();
+  }
+  prev.onclick = () => go(active - 1); next.onclick = () => go(active + 1);
+  track.addEventListener('scroll', () => { if (!frame) frame = requestAnimationFrame(sync); }, {passive: true});
+  track.addEventListener('keydown', e => {
+    if (e.target !== track || !mobile.matches) return;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); go(active + (e.key === 'ArrowRight' ? 1 : -1)); }
+  });
+  mobile.addEventListener('change', layout);
+  new ResizeObserver(sync).observe(track);
+  layout();
+})();

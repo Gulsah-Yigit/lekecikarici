@@ -211,3 +211,22 @@ dialog.rich-guide { max-width: 740px; max-height: 88svh; overflow-y: auto; overs
 .recipe-sources a { display: block; text-decoration: underline; text-underline-offset: 3px; font-size: 11px; color: var(--accent); margin-bottom: 9px; }
 .recipe-panel .recipe-footnote { font-size: 10px; margin-top: 20px; }
 @media (max-width: 760px) { dialog.rich-guide { padding: 30px 22px; max-height: 90svh; } .rich-guide h2 { font-size: 24px; } .guide-controls { grid-template-columns: 1fr; gap: 3px; } .recipe-panel h3 { font-size: 18px; } }
+
+.surface-carousel-controls { display: none; }
+@media (max-width: 760px) {
+  .surfaces .surfacecards {
+    position: relative; display: flex; gap: 14px; overflow-x: auto;
+    scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
+    scrollbar-width: none; padding-bottom: 5px;
+  }
+  .surfaces .surfacecards::-webkit-scrollbar { display: none; }
+  .surfaces .surface-card {
+    flex: 0 0 calc(100% - 26px); min-width: 0;
+    scroll-snap-align: start;
+  }
+  .surfaces .surface-card:last-child { scroll-snap-align: end; }
+  .surface-carousel-controls { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 18px; }
+  .surface-carousel-controls button { width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; background: #fff; color: var(--ink); font-size: 20px; }
+  .surface-carousel-controls button:disabled { opacity: .35; cursor: default; }
+  .surface-position { min-width: 40px; text-align: center; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+}
