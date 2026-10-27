@@ -356,11 +356,12 @@ dialog.rich-guide { max-width: 740px; max-height: 88svh; overflow-y: auto; overs
 .ingredients-heading > p { font-size: 14px; margin-top: 14px; }
 .ingredient-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 17px; }
 .ingredient-card { background: #ffffffed; border-radius: 12px; overflow: hidden; }
-.ingredient-art { height: 155px; background-image: url('assets/ingredient-illustrations.png'); background-size: 300% auto; background-repeat: no-repeat; }
-.ingredient-enzyme { background-position: left center; }
-.ingredient-oxygen { background-position: center center; }
-.ingredient-surfactant { background-position: right center; }
-.ingredient-copy { padding: 17px 21px 23px; }
+.ingredient-art { position: relative; height: 108px; background: #fff; }
+.ingredient-art::before { content: ''; position: absolute; width: 96px; height: 96px; left: 50%; top: 6px; transform: translateX(-50%); background-image: url('assets/ingredient-illustrations.png'); background-size: 288px 96px; background-repeat: no-repeat; }
+.ingredient-enzyme::before { background-position: left center; }
+.ingredient-oxygen::before { background-position: center center; }
+.ingredient-surfactant::before { background-position: right center; }
+.ingredient-copy { padding: 12px 21px 20px; }
 .ingredient-copy h3 { font-size: 19px; line-height: 1.4; }
 .ingredient-copy p { font-size: 12px; line-height: 1.7; margin-top: 11px; }
 .ingredient-copy .ingredient-lead { color: var(--accent); font-size: 12px; margin-top: 8px; }
@@ -380,7 +381,7 @@ dialog.rich-guide { max-width: 740px; max-height: 88svh; overflow-y: auto; overs
  .ingredients-heading h2 { font-size: 28px; }
  .ingredients-heading > p { font-size: 13px; }
  .ingredient-grid { grid-template-columns: 1fr; gap: 14px; }
- .ingredient-art { height: 155px; }
+ .ingredient-art { height: 108px; }
  .ingredient-copy { padding: 15px 20px 21px; }
  .ingredient-copy h3 { font-size: 19px; }
  .ingredient-copy p { font-size: 13px; }
