@@ -124,3 +124,51 @@ function renderFinderRecommendation(surface, stain, age) {
  }
  if(care)care.onchange=update;update();
 }
+
+// Concise card guides. Editorial references: ACI stain removal/Class of Clean,
+// La-Z-Boy upholstery care, Shaw carpet care, Smithsonian MCI stain removal.
+const stainCardGuides = {
+ 'Yağ': {
+  intro: 'Evde yıkanabilen giysilerde yemek yağı lekesi için ön işlemle başlayın.',
+  steps: ['Fazla yağı bez veya kâğıt havluyla nazikçe alın; ovalayarak yaymayın.', 'Kumaşa uygun sıvı çamaşır deterjanı veya ön yıkama leke çıkarıcıyı ürünün talimatına göre uygulayın.', 'Bakım etiketinin izin verdiği sıcaklıkta yıkayın. Leke kaldıysa kurutmadan önce ön işlemi yeniden değerlendirin.'],
+  product: 'Kumaş ve renge uygun sıvı deterjan veya ön yıkama leke çıkarıcı.',
+  note: 'Leke çıkmadan kurutma makinesini kullanmayın. Yün, ipek ve kuru temizleme isteyen giysilerde özel bakım talimatını izleyin.'
+ },
+ 'Çay': {
+  intro: 'Halıdaki çay lekesinde önce fazla sıvıyı alın. Temizleyici kullanmadan önce halının bakım talimatını kontrol edin.',
+  steps: ['Temiz, beyaz bir bezle dış kenardan içeri doğru tamponlayın; ovalamayın.', 'Suyla temizliğe izin veriliyorsa bu halının lifine ve çay lekesine uygun noktasal temizleyiciyi görünmeyen alanda deneyin, ardından etiketine göre uygulayın.', 'Ürünün kalıntı giderme talimatını izleyin. Suyla durulama gerekiyorsa hafif nemli bez kullanın; fazla nemi kuru bezle alın.'],
+  product: 'Halıya ve leke türüne uygunluğu belirtilmiş noktasal leke çıkarıcı.',
+  note: 'Tabanı aşırı ıslatmayın. İpek, viskon, jüt, el dokuması veya bakım bilgisi belirsiz halılarda ev tipi sulu uygulama yerine uzman görüşü alın.'
+ },
+ 'Kahve': {
+  intro: 'Koltuktaki kahve lekesinde kullanılacak ürünü döşemenin bakım kodu belirler.',
+  steps: ['Fazla kahveyi temiz, beyaz bir bezle emdirin; lekeyi ovalamayın.', 'W kodunda su bazlı döşeme şampuanı/köpüğü; W-S kodunda üreticinin izin verdiği, lekeye uygun ürünü seçin. Görünmeyen bir alanda deneyin.', 'Etikete göre az miktarda uygulayıp dıştan içe tamponlayın. Kalıntı giderme ve kurutma talimatını izleyin; dolguyu ıslatmayın.'],
+  product: 'Döşeme koduyla ve kahve lekesiyle uyumlu döşeme temizleyicisi.',
+  note: 'S kodunda su, X kodunda sıvı veya köpük temizleyici kullanmayın. Kod bilinmiyorsa fazla sıvıyı almakla yetinin ve üreticiden bilgi alın.'
+ },
+ 'Mürekkep': {
+  intro: 'Mürekkebin türü ve gömleğin kumaşı sonucu etkiler; her kalem izi aynı yöntemle çıkmaz.',
+  steps: ['Yıkanabilirlik ve kumaş bilgisini kontrol edin. Lekenin altına temiz, beyaz kâğıt havlu yerleştirin.', 'Mürekkep için uygunluğu belirtilmiş ön işlem ürününü görünmeyen alanda deneyin. Etiket izin veriyorsa kumaşın arkasından tamponlayarak uygulayın; mürekkep aktıkça alttaki havluyu değiştirin.', 'Ürün talimatına göre durulayıp bakım etiketine uygun yıkayın. Leke duruyorsa ısıyla kurutmayın.'],
+  product: 'Mürekkep lekesine, kumaşa ve renge uygun ön işlem ürünü.',
+  note: 'Kolonya, aseton veya farklı çözücüleri rastgele uygulamayın. Bazı mürekkepler kalıcı olabilir; hassas veya kuru temizleme isteyen gömleklerde uzman desteği alın.'
+ },
+ 'Kurumuş': {
+  intro: 'Kurumuş leke tek bir leke türü değildir. Önce lekenin kaynağını, yüzeyi ve önceki işlemleri belirleyin.',
+  steps: ['Lekenin yağ, içecek, mürekkep gibi kaynağını ve daha önce kullanılan ürünleri belirleyin; yüzeyin bakım etiketini inceleyin.', 'Yıkanabilir giyside lekeye ve kumaşa uygun ön işlem ürünü kullanın. Yalnızca etiket izin veriyorsa önerilen süre boyunca bekletin.', 'Giysiyi bakım etiketine göre yıkayıp lekeyi kontrol edin. Halı ve koltukta bekletme yerine yüzeyin izin verdiği noktasal temizlik yöntemini kullanın.'],
+  product: 'Lekenin kaynağına ve yüzeye göre seçilmiş ön işlem veya noktasal temizlik ürünü.',
+  note: 'Dozu artırmayın, sertçe kazımayın ve ürünleri karıştırmayın. Isı görmüş veya önceki işlemi bilinmeyen lekelerde uzman değerlendirmesi gerekebilir.'
+ },
+ 'Beyaz': {
+  intro: 'Sararma ter, deodorant kalıntısı veya farklı bir renk değişiminden kaynaklanabilir. Beyaz olması, kumaşın her ağartıcıya uygun olduğu anlamına gelmez.',
+  steps: ['Bakım etiketini ve sararmanın bulunduğu alanı inceleyin. Ter/deodorant kalıntısında kumaşa uygun sıvı deterjan veya ön işlem ürünüyle başlayın.', 'Kalıntı sürüyorsa yalnızca bakım ve ürün etiketi izin verdiğinde enzimli ürün veya oksijen bazlı ağartıcı seçeneğini değerlendirin; süre ve dozu etiketten izleyin.', 'Etikete uygun yıkayıp iyice durulayın. Kurutmadan önce sararmanın azalıp azalmadığını kontrol edin.'],
+  product: 'Kumaşa uygun ön işlem ürünü; izin varsa enzimli ürün veya oksijen bazlı ağartıcı.',
+  note: 'Klorlu ağartıcıyı varsayılan çözüm olarak kullanmayın. Pas şüphesinde klorlu ağartıcı uygulamayın; temizlik ürünlerini karıştırmayın.'
+ }
+};
+function openStainCardGuide(key, title) {
+ const data=stainCardGuides[key]; if(!data)return;
+ openReading(title+' nasıl çıkar?',[]);dialog.classList.add('rich-guide');
+ const body=$('#readbody');body.append(guideElement('p',data.intro,'guide-scope'));
+ const list=guideElement('ol');data.steps.forEach(step=>list.append(guideElement('li',step)));
+ const panel=guideElement('div','','recipe-panel');panel.append(list,guideElement('h4','Uygun ürün seçimi'),guideElement('p',data.product),guideElement('h4','Bakım notu'),guideElement('p',data.note,'recipe-condition'));body.append(panel);
+}
