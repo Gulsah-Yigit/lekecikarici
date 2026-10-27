@@ -1,0 +1,26 @@
+LEKEÇIKARICI.COM — TASARIM SÜRÜMÜ 3
+27 Ekim 2026
+
+KULLANIM
+index.html dosyasını tarayıcıda açın. style.css, app.js ve assets klasörü aynı yapıda kalmalıdır.
+Bu proje bir derleme veya paket kurulumu gerektirmez.
+Google Fonts yazı tipleri internetten yüklenir; erişim yoksa sistem yazı tipi kullanılır.
+
+DOSYALAR
+index.html: Sayfa içeriği ve dokuz adımlı bölüm sırası.
+style.css: Renkler, yerleşim ve mobil görünüm.
+app.js: Arama, çözüm bulucu ve açılan bilgi pencereleri.
+assets/leke-hero-v2.png: Yapay zekâ ile üretilmiş temsili hero görseli.
+
+İÇERİK DURUMU
+Bu bir arayüz prototipidir. Alt rehberler şimdilik bilgi pencereleri olarak açılır.
+Ürün testleri, marka incelemeleri, yazar bilgileri ve kaynaklı uygulama rehberleri henüz tamamlanmamıştır.
+Çözüm bulucu örnek yönlendirmeler gösterir; ürün türleri test edilmiş öneriler değildir.
+Tasarımda arama motoru indekslemesini önleyen noindex,nofollow etiketi vardır.
+Gerçek yayına geçmeden önce içerik, kaynaklar, yazar bilgisi ve indeksleme ayarları tamamlanmalıdır.
+
+ÇALIŞMA DÜZENİ
+Ana düzenleme kopyası: ayrı HTML, CSS ve JavaScript dosyaları.
+Tek dosya HTML: kolay önizleme/paylaşım için dışa aktarım; ana düzenleme kopyası değildir.
+Her düzenleme tek bir bölüm veya açıkça tanımlanmış değişiklik grubu kapsamında yapılır.
+Onaylanan aşamalarda ZIP ve tek dosya HTML yeniden üretilir.
