@@ -15,3 +15,6 @@ Lisans: https://www.pexels.com/license/
 
 product-types-editorial.png — AI-generated with built-in imagegen, 2026-10-27. Unbranded editorial still life; illustrative product types.
 Prompt: Photorealistic editorial still life on a warm pale stone counter: trigger spray, ivory liquid detergent bottle with sage cap, glass powder jar with wooden scoop, soap bar, wipes pouch and stain pen; cream linen, sage cloth, blurred green plant, warm window light. No labels, logos or text.
+
+coffee-stain-editorial.png — AI-generated with built-in imagegen, 2026-10-27.
+Prompt: Photorealistic close-up of coffee spilling from an ivory cup onto cream woven upholstery, brown stain and droplets, warm natural light, blurred sage plant. Landscape 4:3 composition safe for an oval crop. No text, logos, hands or cleaning products.

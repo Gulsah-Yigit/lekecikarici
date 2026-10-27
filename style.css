@@ -318,3 +318,33 @@ dialog.rich-guide { max-width: 740px; max-height: 88svh; overflow-y: auto; overs
  .products-dark .productlist p { font-size: 12px; }
  .products-dark .productlist i { flex-basis: 44px; height: 44px; }
 }
+
+/* Warm, full-width stain guide section with a clean straight transition. */
+.stain-editorial { max-width: none; width: 100%; margin: 0; padding: 58px 0; border-radius: 0; background: #f7e9df; }
+.stain-editorial-layout { display: grid; grid-template-columns: .95fr 1.25fr; gap: 40px; align-items: center; }
+.stain-editorial .stainheading h2 { font-size: 34px; line-height: 1.2; max-width: 440px; }
+.stain-editorial .stainheading > p { font-size: 14px; max-width: 380px; line-height: 1.7; }
+.stain-editorial-photo { margin: 25px 0 0; overflow: hidden; border-radius: 47% 53% 46% 54% / 49% 44% 56% 51%; }
+.stain-editorial-photo img { width: 100%; height: auto; display: block; aspect-ratio: 4/3; object-fit: cover; }
+.stain-editorial .stainheading .textlink { margin-top: 18px; }
+.stain-editorial .guidegrid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; margin: 0; }
+.stain-editorial .guide { display: flex; position: relative; flex-direction: column; align-items: flex-start; justify-content: flex-start; min-height: 163px; padding: 20px; border: 1px solid #ffffff90; border-radius: 9px; background: #fffdf9; text-align: left; box-shadow: none; }
+.stain-editorial .guide::after { content: '↗'; position: absolute; right: 17px; bottom: 18px; color: var(--accent); font-size: 22px; }
+.stain-guide-icon { display: grid; place-items: center; width: 43px; height: 43px; border-radius: 50%; background: #edf1e7; color: #59745d; margin-bottom: 14px; }
+.stain-guide-icon svg { width: 25px; height: 25px; }
+.stain-editorial .guide small { display: none; }
+.stain-editorial .guide h3 { font-size: 15px; line-height: 1.45; padding-right: 13px; }
+.stain-editorial .guide > span { display: none; }
+.stain-editorial .guide:hover { border-color: #b5c9b7; background: #fff; transform: translateY(-2px); }
+@media (max-width: 1000px) { .stain-editorial-layout { gap: 25px; grid-template-columns: .9fr 1.2fr; } .stain-editorial .stainheading h2 { font-size: 30px; } }
+@media (max-width: 760px) {
+ .stain-editorial { padding: 42px 0; }
+ .stain-editorial-layout { grid-template-columns: 1fr; gap: 28px; }
+ .stain-editorial .stainheading h2 { font-size: 28px; }
+ .stain-editorial .stainheading > p { font-size: 13px; }
+ .stain-editorial-photo { max-width: 420px; margin: 22px auto 0; }
+ .stain-editorial .guidegrid { gap: 11px; }
+ .stain-editorial .guide { min-height: 165px; padding: 17px 14px; }
+ .stain-editorial .guide h3 { font-size: 13px; padding-right: 0; }
+ .stain-editorial .guide::after { right: 12px; bottom: 10px; font-size: 18px; }
+}
