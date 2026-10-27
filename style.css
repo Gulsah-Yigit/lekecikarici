@@ -55,3 +55,23 @@ html { scroll-padding-top: calc(var(--header-height) + 20px); }
   .hero .herolink { margin-top: 12px; }
   .hero-scene { background-size: 100% 100%,auto 360px; }
 }
+
+
+/* Bring the copy and the stain into one central composition. */
+@media (min-width: 761px) {
+  .hero.wrap { max-width: 1000px; width: calc(100% - 120px); }
+  .hero .herocopy { max-width: 510px; }
+  .hero-scene {
+    background-size: 100% 100%,calc(100% + 340px) auto;
+    background-position: center,right calc(50% + 95px);
+    background-image: linear-gradient(90deg,#fcfcf8 0%,#fcfcf8f2 22%,#fcfcf8d6 37%,#fcfcf873 50%,#fcfcf812 65%,transparent 76%),url('assets/leke-hero-v2.png');
+  }
+  .hero .handnote { right: 2%; top: 36%; }
+}
+@media (min-width: 761px) and (max-width: 1100px) {
+  .hero.wrap { width: calc(100% - 96px); }
+  .hero .herocopy { max-width: 465px; }
+  .hero h1 { font-size: 50px; }
+  .hero-scene { background-size: 100% 100%,auto calc(100% + 140px); background-position: center,calc(50% - 90px) calc(50% + 65px); }
+  .hero .handnote { right: 0; top: 47%; font-size: 22px; }
+}
