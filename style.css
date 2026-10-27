@@ -191,3 +191,23 @@ footer .brand-symbol { width: 34px; height: 38px; }
   .surfaces .surfacecards .surface-topics button { font-size: 11px; padding: 7px 10px; }
   .surfaces .surfacecards .surface-cta { font-size: 13px; min-height: 44px; }
 }
+
+dialog.rich-guide { max-width: 740px; max-height: 88svh; overflow-y: auto; overscroll-behavior: contain; }
+.rich-guide .close { position: sticky; top: 0; float: right; margin: -18px -16px 0 8px; background: var(--paper); border-radius: 50%; width: 34px; height: 34px; z-index: 2; }
+.rich-guide h2 { font-size: 27px; padding-right: 20px; }
+.rich-guide .guide-scope { font-size: 12px; line-height: 1.7; }
+.guide-controls { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 15px; margin: 22px 0 7px; }
+.guide-controls label { font-size: 11px; color: var(--ink); }
+.guide-controls select { font-size: 12px; height: 46px; }
+.recipe-panel { border-top: 1px solid var(--line); padding-top: 21px; }
+.recipe-panel h3 { font-size: 19px; line-height: 1.4; margin-bottom: 15px; }
+.recipe-panel h4 { font-size: 12px; margin: 20px 0 7px; color: var(--accent); }
+.recipe-panel .recipe-condition { background: var(--mint); padding: 14px 16px; border-radius: 8px; color: var(--ink); font-size: 12px; }
+.recipe-panel ol { margin: 20px 0; padding-left: 25px; }
+.recipe-panel li { padding-left: 5px; margin-bottom: 13px; font-size: 13px; line-height: 1.75; }
+.recipe-panel li::marker { color: var(--accent); font-weight: 700; }
+.recipe-panel p { font-size: 12px; line-height: 1.75; }
+.recipe-sources { padding-top: 1px; border-top: 1px solid var(--line); margin-top: 23px; }
+.recipe-sources a { display: block; text-decoration: underline; text-underline-offset: 3px; font-size: 11px; color: var(--accent); margin-bottom: 9px; }
+.recipe-panel .recipe-footnote { font-size: 10px; margin-top: 20px; }
+@media (max-width: 760px) { dialog.rich-guide { padding: 30px 22px; max-height: 90svh; } .rich-guide h2 { font-size: 24px; } .guide-controls { grid-template-columns: 1fr; gap: 3px; } .recipe-panel h3 { font-size: 18px; } }
