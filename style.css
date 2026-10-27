@@ -68,3 +68,11 @@ html { scroll-padding-top: calc(var(--header-height) + 20px); }
 @media (min-width: 761px) and (max-height: 760px) {
   .hero h1 { font-size: clamp(48px,4.1vw,56px); }
 }
+
+/* Center the simplified copy vertically, leaving the lower mobile area to the photo. */
+@media (max-width: 760px) and (min-height: 701px) {
+  .hero { align-items: center; padding-top: 28px; padding-bottom: 185px; }
+}
+@media (max-width: 760px) and (max-height: 700px) {
+  .hero { align-items: center; }
+}
