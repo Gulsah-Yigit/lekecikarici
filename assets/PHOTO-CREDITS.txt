@@ -28,3 +28,5 @@ hero-woman-coffee.png — Built-in imagegen, 2026-10-30. Prompt: Candid woman in
 
 finder-clothes.png, finder-sofa.png, finder-carpet.png — Built-in imagegen, 2026-10-30. Prompt set: 4x4 equal photographic contact sheets of 16 centered stains on white cotton shirt / beige sofa upholstery / cream loop carpet; consistent soft daylight; coffee, tea, oil, ink, chocolate, tomato sauce, juice, blood-like textile stain, grass, mud, lipstick, foundation, perspiration, deodorant, gum, wax. No labels or people. Used as CSS sprites; images are illustrative, not test evidence.
 Expanded finder editorial references: ACI Stain Removal Guide; University of Georgia Extension Textiles, Remove Stains From Chewing Gum. Existing upholstery and carpet care sources remain applicable.
+
+finder-source-illustrations.png — Built-in imagegen, 2026-10-30. Prompt: 4x4 equal editorial gouache/ink source-object illustrations on warm ivory: coffee cup, Turkish tea, oil cruet, chocolate; tomato sauce, berry juice, ink pen, lipstick; foundation, grass, muddy boot, candle; blood drop symbol, deodorant, gum, perspiration shirt. No text or brands. Used at small native proportions as a CSS sprite.

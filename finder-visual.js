@@ -1,30 +1,26 @@
-// Selection changes update both the photograph and the recommendation state.
+// One source selection, one surface selection, and an inline recommendation.
 (() => {
- const names=Array.from(document.querySelectorAll('[data-stain]')).map(b=>b.dataset.stain);
- const sheets={'Kıyafet':'clothes','Koltuk':'sofa','Halı':'carpet'};
- const stain=document.querySelector('#stain'),surface=document.querySelector('#surface');
- const photo=document.querySelector('#finder-photo'),result=document.querySelector('#result');
+ const stain=document.querySelector('#stain'),surface=document.querySelector('#surface'),result=document.querySelector('#result');
+ const tiles=Array.from(document.querySelectorAll('[data-stain]'));
+ const more=document.querySelector('#more-stains'),filter=document.querySelector('#stain-filter');let expanded=false;
+ function filterTiles(){
+  const q=filter.value.toLocaleLowerCase('tr').trim();let count=0;
+  tiles.forEach(b=>{b.hidden=q?!b.dataset.stain.toLocaleLowerCase('tr').includes(q):(!expanded&&Number(b.dataset.index)>=12);if(!b.hidden)count++;});
+  document.querySelector('#stain-empty').hidden=count>0;
+  more.hidden=!!q;more.setAttribute('aria-expanded',String(expanded));more.textContent=expanded?'Daha az göster −':'Diğer lekeler +';
+ }
  function update(){
-  const index=names.indexOf(stain.value),x=(index%4)*100/3+'%',y=Math.floor(index/4)*100/3+'%';
-  photo.style.setProperty('--sheet',`url(assets/finder-${sheets[surface.value]}.png)`);
-  photo.style.setProperty('--sx',x);photo.style.setProperty('--sy',y);
-  photo.setAttribute('aria-label',`${surface.value} üzerinde ${stain.value.toLocaleLowerCase('tr')} lekesi, temsili görsel`);
-  document.querySelector('#finder-photo-label').textContent=stain.value+' lekesi';
-  document.querySelectorAll('[data-stain]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.stain===stain.value));
-  document.querySelectorAll('[data-finder-surface]').forEach(b=>{
-   b.setAttribute('aria-pressed',b.dataset.finderSurface===surface.value);
-   const mini=b.querySelector('.surface-mini');mini.style.setProperty('--sx',x);mini.style.setProperty('--sy',y);
-  });
+  const selected=tiles.find(b=>b.dataset.stain===stain.value);if(!selected)return;
+  const art=document.querySelector('#selected-source-art');art.style.setProperty('--sx',(Number(selected.dataset.index)%4)*100/3+'%');art.style.setProperty('--sy',Math.floor(Number(selected.dataset.index)/4)*100/3+'%');
+  document.querySelector('#selected-source-name').textContent=stain.value;
+  tiles.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.stain===stain.value)));
+  document.querySelectorAll('[data-finder-surface]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.finderSurface===surface.value)));
   result.hidden=true;result.replaceChildren();
  }
- document.querySelectorAll('[data-stain]').forEach(b=>b.addEventListener('click',()=>{stain.value=b.dataset.stain;update();}));
+ tiles.forEach(b=>b.addEventListener('click',()=>{stain.value=b.dataset.stain;update();}));
  document.querySelectorAll('[data-finder-surface]').forEach(b=>b.addEventListener('click',()=>{surface.value=b.dataset.finderSurface;update();}));
  surface.addEventListener('change',update);stain.addEventListener('change',update);
  document.querySelector('#age').addEventListener('change',()=>{result.hidden=true;result.replaceChildren();});
- document.querySelector('#stain-filter').addEventListener('input',e=>{
-  const q=e.target.value.toLocaleLowerCase('tr').trim();let count=0;
-  document.querySelectorAll('[data-stain]').forEach(b=>{b.hidden=!b.dataset.stain.toLocaleLowerCase('tr').includes(q);if(!b.hidden)count++;});
-  document.querySelector('#stain-empty').hidden=count>0;
- });
- update();
+ filter.addEventListener('input',filterTiles);more.addEventListener('click',()=>{expanded=!expanded;filterTiles();});
+ update();filterTiles();
 })();
