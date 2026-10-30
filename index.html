@@ -2,63 +2,33 @@
 <html lang="tr">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Kıyafet, koltuk ve halı lekeleri için başlangıç rehberi.">
-  <title>Lekeçıkarıcı · Küçük kazalar, doğru çözümler</title>
-  <link rel="stylesheet" href="style.css?v=hero-photo-4">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Lekeçıkarıcı.com leke rehberi">
+  <title>Lekeçıkarıcı.com</title>
+  <link rel="stylesheet" href="style.css?v=1">
 </head>
-<body id="top">
-  <svg class="icondefs" xmlns="http://www.w3.org/2000/svg"><defs>
-    <symbol id="shirt" viewBox="0 0 48 48"><path d="m15 8-10 8 7 9 5-3v18h17V22l5 3 6-9-11-8c-2 8-16 8-19 0Z"/></symbol>
-    <symbol id="sofa" viewBox="0 0 48 48"><path d="M10 24V13c0-4 28-4 28 0v11M12 32h24M8 24c-5-7-9 7-4 13h40c5-6 1-20-4-13v8M9 37v5m30-5v5M24 13v13"/></symbol>
-    <symbol id="rug" viewBox="0 0 48 48"><path d="M9 8h30v32H9zM14 13h20v22H14zM9 4v4m8-4v4m8-4v4m8-4v4m6-4v4M9 40v4m8-4v4m8-4v4m8-4v4m6-4v4M24 18l6 6-6 6-6-6z"/></symbol>
-  </defs></svg>
-
-  <div class="site-header"><header class="wrap">
-    <a class="brand" href="#top" aria-label="Lekeçıkarıcı.com ana sayfa"><img class="brand-symbol" src="assets/leke-spray-logo.png" alt="" width="56" height="56"><span>lekeçıkarıcı<span class="domain">.com</span><small>LEKE REHBERİ</small></span></a>
-    <a class="navbutton" href="#bulucu">LEKE REHBERİ</a>
-    <nav aria-label="Ana menü"><a href="#top">Ana sayfa</a><a href="#bulucu">Çözüm bulucu</a></nav>
-  </header></div>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Lekeçıkarıcı.com ana sayfa">
+      <span class="brand-icon" aria-hidden="true">✦</span>
+      <span class="brand-name">lekeçıkarıcı<span>.com</span></span>
+    </a>
+    <a class="header-cta" href="#rehber">LEKE REHBERİ</a>
+    <nav aria-label="Ana menü">
+      <a class="active" href="/">Ana sayfa</a>
+      <a href="#rehber">Çözüm bulucu</a>
+    </nav>
+  </header>
 
   <main>
-    <div class="hero-scene hero-woman">
-      <section class="hero wrap">
-        <div class="herocopy">
-          <h1>Leke çıkarıcı önerileri<br>ve pratik çözümler</h1>
-          <p>Kıyafet, koltuk ve halı lekeleri için temizleme yöntemlerini keşfedin.</p>
-          <a class="hero-guide-button" href="#bulucu">LEKE REHBERİNİ KEŞFET</a>
-        </div>
-        <div class="hero-media"><img src="assets/hero-cleaning-photo.png" alt="Temizlik ürünleri ve kahve lekesini gösteren ürün fotoğrafı" width="1122" height="1402" fetchpriority="high"></div>
-      </section>
-    </div>
-
-    <section id="bulucu" class="source-finder">
-      <div class="wrap">
-        <div class="source-heading"><div><div class="eyebrow">LEKE ÇÖZÜM BULUCU</div><h2>Lekenin kaynağı ne?</h2><p>Seçin, yüzeyi belirtin, ilk adımı birlikte bulalım.</p></div><span class="source-handnote" aria-hidden="true">Küçük lekeler,<br>büyük rahatlık.</span></div>
-        <form id="finder" class="source-finder-form">
-          <div class="source-catalog">
-            <label class="source-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></svg><input id="stain-filter" type="search" placeholder="Leke ara…" aria-label="Leke seçeneklerinde ara"></label>
-            <div class="source-grid" aria-label="Lekenin kaynağını seçin"></div>
-            <p id="stain-empty" hidden>Bu isimde bir leke bulunamadı.</p>
-            <button type="button" id="more-stains" aria-expanded="false">Diğer lekeler +</button>
-          </div>
-          <div class="source-controls">
-            <p class="selected-caption">Seçilen kaynak</p>
-            <div class="source-selected"><span id="selected-source-art" class="source-art" aria-hidden="true"></span><strong id="selected-source-name">Kahve</strong></div>
-            <select id="stain" hidden aria-label="Seçili leke"></select>
-            <div class="source-field"><span id="surface-label">Nerede?</span><div class="source-surface-options" role="group" aria-labelledby="surface-label"><button type="button" data-finder-surface="Kıyafet" aria-pressed="true"><svg><use href="#shirt"/></svg><span>Kıyafet</span></button><button type="button" data-finder-surface="Koltuk"><svg><use href="#sofa"/></svg><span>Koltuk</span></button><button type="button" data-finder-surface="Halı"><svg><use href="#rug"/></svg><span>Halı</span></button></div><select id="surface" hidden><option>Kıyafet</option><option>Koltuk</option><option>Halı</option></select></div>
-            <label class="source-field">Ne zamandır?<select id="age"><option>Yeni oluştu</option><option>Kurudu / bekledi</option><option>Daha önce işlem gördü</option></select></label>
-            <button type="submit" class="primary">Öneriyi göster <span aria-hidden="true">→</span></button>
-          </div>
-          <div id="result" role="status" hidden></div>
-        </form>
+    <section class="hero" id="rehber">
+      <div class="hero-copy">
+        <h1>Leke çıkarıcı<br>önerileri ve pratik<br>çözümler</h1>
+        <p>Kıyafet, koltuk ve halı lekeleri için doğru başlangıç adımını bulun.</p>
+        <a class="hero-cta" href="#rehber">LEKE REHBERİNİ KEŞFET</a>
       </div>
+      <div class="hero-visual" role="img" aria-label="Yakında eklenecek hero görseli"></div>
     </section>
   </main>
-
-  <footer class="wrap"><div><a class="brand" href="#top" aria-label="Lekeçıkarıcı.com ana sayfa"><img class="brand-symbol" src="assets/leke-rehberi-mark.svg" alt="" width="44" height="48"><span>lekeçıkarıcı<span class="domain">.com</span></span></a><p>Temiz bir başlangıç, doğru bilgiyle.</p></div><div><a href="#top">Ana sayfa</a><a href="#bulucu">Çözüm bulucu</a></div><small>© 2026 · Arayüz çalışması<br>Görseller temsili, içerikler başlangıç örneğidir.</small></footer>
-  <script src="app.js?v=two-sections-1"></script>
-  <script src="surface-guides.js?v=two-sections-1"></script>
-  <script src="finder-visual.js?v=two-sections-1"></script>
 </body>
 </html>
