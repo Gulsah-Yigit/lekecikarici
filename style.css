@@ -628,6 +628,11 @@ dialog.rich-guide { max-width: 740px; max-height: 88svh; overflow-y: auto; overs
 .hero-media img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .source-finder { background: #f1ecea; }
 
+/* Navbar proportions and continuous hero surface. */
+.site-header .brand-symbol { width: 56px; height: 56px; object-fit: contain; }
+.site-header .navbutton { align-self: start; display: grid; width: min(34vw, 465px); height: 86px; padding: 0 22px; border-radius: 0 0 24px 24px; place-items: center; text-align: center; }
+.hero-scene.hero-woman { background: var(--hero-paper); }
+
 /* Keep the complete desktop hero above the fold. */
 @media (min-width: 761px) {
  .hero-woman .hero.wrap { width: 100%; max-width: none; height: calc(100svh - 98px); min-height: 480px; max-height: 650px; padding: 0; display: grid; grid-template-columns: 50% 50%; }
@@ -640,9 +645,9 @@ dialog.rich-guide { max-width: 740px; max-height: 88svh; overflow-y: auto; overs
  .site-header { border-radius: 0 0 22px 22px; }
  .site-header header { min-height: 77px; height: auto; padding: 15px 6%; grid-template-columns: 1fr auto; gap: 14px; }
  .site-header .brand { font-size: 19px; }
- .site-header .brand-symbol { width: 33px; height: 36px; }
+ .site-header .brand-symbol { width: 42px; height: 42px; }
  .site-header nav { display: none; }
- .site-header .navbutton { padding: 13px 16px; border-radius: 18px; font-size: 11px; }
+ .site-header .navbutton { width: auto; height: auto; padding: 15px 18px; border-radius: 0 0 16px 16px; font-size: 11px; }
  .hero { min-height: 0; display: block; }
  .herocopy { padding: 58px 8% 45px; }
  .hero h1 { font-size: clamp(43px,12vw,61px); letter-spacing: -3px; }
