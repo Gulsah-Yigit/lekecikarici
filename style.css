@@ -475,3 +475,26 @@ dialog.rich-guide { max-width: 740px; max-height: 88svh; overflow-y: auto; overs
  .hero-woman .hero-mobile-media img { width: 100%; height: 100%; object-fit: cover; object-position: right center; }
  .hero-woman .hero-mobile-media::before { background: linear-gradient(#fcfcf8,transparent); height: 28px; }
 }
+
+/* Mixed-media hero: photo with gently drawn editorial annotations. */
+.hero-woman { overflow: hidden; background-color: #faf5ec; background-image: linear-gradient(105deg,#faf5ec 0%,#faf5ecf5 28%,#faf5ecba 39%,#faf5ec18 54%,transparent 62%),url('assets/hero-woman-coffee.png'); }
+.hero-woman > .hero-sketch { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; color: #35786c; }
+.hero-woman .herocopy { z-index: 2; }
+.hero-sketch path { fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; animation: hero-draw 1.3s ease-out .35s forwards; }
+.hero-sketch .sketch-drops path { animation-delay: .9s; }
+.hero-sketch .sketch-note path { animation-delay: 1.2s; }
+.hero-sketch text { fill: currentColor; stroke: none; font: 40px Caveat,cursive; opacity: 0; animation: hero-note .7s ease-out 1.2s forwards; }
+@keyframes hero-draw { to { stroke-dashoffset: 0; } }
+@keyframes hero-note { to { opacity: 1; } }
+.hero-woman .hero-mobile-media .hero-sketch { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; color: #35786c; }
+@media (max-width: 760px) {
+ .hero-woman { background: #faf5ec; }
+ .hero-woman > .hero-sketch { display: none; }
+ .hero-woman .hero-mobile-media img { object-position: right center; }
+ .hero-woman .hero-mobile-media::before { background: linear-gradient(#faf5ec,transparent); }
+ .hero-woman .hero-mobile-media .hero-sketch { display: block; }
+}
+@media (prefers-reduced-motion: reduce) {
+ .hero-sketch path { animation: none; stroke-dashoffset: 0; }
+ .hero-sketch text { animation: none; opacity: 1; }
+}
