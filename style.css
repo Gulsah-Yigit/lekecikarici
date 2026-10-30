@@ -411,3 +411,44 @@ dialog.rich-guide { max-width: 740px; max-height: 88svh; overflow-y: auto; overs
  .ingredient-title h3 { font-size: 19px; }
  .ingredient-copy > p:not(.ingredient-lead) { font-size: 13px; }
 }
+
+/* White shirt / coffee hero inspired by the selected collage. */
+.hero-shirt { background-color: #fcfcf8; background-image: linear-gradient(90deg,#fcfcf8 0%,#fcfcf8ef 27%,#fcfcf880 43%,transparent 62%),url('assets/hero-shirt-coffee.png'); background-size: cover; background-position: center; }
+.hero-shirt .hero.wrap { max-width: 1280px; width: calc(100% - 100px); min-height: calc(100svh - 120px); display: grid; grid-template-columns: 1fr; grid-template-rows: 1fr auto; align-items: center; padding: 45px 0 28px; gap: 36px; }
+.hero-shirt .herocopy { max-width: 540px; padding: 0; }
+.hero-shirt .hero h1 { font-family: Georgia,'Times New Roman',serif; font-size: clamp(42px,4vw,58px); font-weight: 500; letter-spacing: -1.8px; line-height: 1.08; max-width: 550px; }
+.hero-shirt .hero h1 em { color: var(--ink); }
+.hero-shirt .herocopy > p { font-size: 15px; line-height: 1.7; max-width: 450px; margin: 22px 0; }
+.hero-shirt .search { max-width: 450px; border: 0; background: #ffffffed; box-shadow: 0 7px 28px #183e4310; padding: 5px 5px 5px 18px; }
+.hero-shirt .search input { font-size: 12px; border: 0; outline: none; }
+.hero-shirt .search button { width: 42px; height: 42px; display: grid; place-items: center; background: var(--ink); }
+.hero-shirt .search button svg { width: 19px; height: 19px; }
+.hero-benefits { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; width: 100%; padding-top: 10px; position: relative; z-index: 1; }
+.hero-benefits a { display: flex; align-items: center; gap: 14px; }
+.hero-benefits svg { width: 29px; height: 29px; flex-shrink: 0; color: var(--ink); stroke-width: 1.35; }
+.hero-benefits span { font-size: 12px; line-height: 1.5; color: var(--ink); }
+@media (min-width: 761px) and (max-height: 760px) {
+ .hero-shirt .hero.wrap { min-height: 570px; padding-top: 35px; }
+ .hero-shirt .hero h1 { font-size: 48px; }
+}
+@media (max-width: 1000px) and (min-width: 761px) {
+ .hero-shirt .hero.wrap { width: calc(100% - 56px); }
+ .hero-shirt .herocopy { max-width: 47%; }
+ .hero-shirt .hero h1 { font-size: 44px; }
+ .hero-shirt .herocopy > p { font-size: 13px; }
+}
+@media (max-width: 760px) {
+ .hero-shirt { background: #fcfcf8; }
+ .hero-shirt .hero.wrap { display: flex; flex-direction: column; align-items: stretch; width: 100%; min-height: 0; gap: 0; padding: 0; }
+ .hero-shirt .hero .herocopy { max-width: none; padding: 32px 22px 12px; }
+ .hero-shirt .hero h1 { font-size: clamp(35px,8.8vw,48px); letter-spacing: -1.2px; }
+ .hero-shirt .herocopy > p { font-size: 14px; max-width: none; margin: 18px 0 21px; }
+ .hero-shirt .search { max-width: none; }
+ .hero-shirt .search input { font-size: 12px; }
+ .hero-shirt .hero-mobile-media { display: block; height: clamp(260px,73vw,420px); margin-top: 5px; }
+ .hero-shirt .hero-mobile-media img { object-position: 85% center; object-fit: cover; width: 100%; height: 100%; }
+ .hero-shirt .hero-mobile-media::before { background: linear-gradient(#fcfcf8,transparent); height: 32px; }
+ .hero-benefits { grid-template-columns: repeat(2,1fr); gap: 22px 15px; padding: 22px 22px 28px; background: #fcfcf8; }
+ .hero-benefits span { font-size: 11px; }
+ .hero-benefits svg { width: 26px; height: 26px; }
+}
