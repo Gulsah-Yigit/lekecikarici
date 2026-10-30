@@ -46,6 +46,7 @@ function openSurfaceGuide(surface, initialStain = '') {
   const data = surfaceRecipes[surface];
   if (!data) return;
   $('#surface').value = surface;
+  $('#surface').dispatchEvent(new Event('change'));
   openReading(surface + ' için uygulama rehberi', []);
   dialog.classList.add('rich-guide');
   const body = $('#readbody');
@@ -97,7 +98,7 @@ function openSurfaceGuide(surface, initialStain = '') {
 
 function renderFinderRecommendation(surface, stain, age) {
  const root=$('#result');root.replaceChildren();root.hidden=false;
- const data=surfaceRecipes[surface], key=/Çay|Kahve/.test(stain)?'Çay / kahve':stain, recipe=data.recipes[key];
+ const data=surfaceRecipes[surface], key=/Çay|Kahve/.test(stain)?'Çay / kahve':stain, recipe=data.recipes[key] || {title:stain+' lekesi'};
  root.append(guideElement('strong',stain+' · '+surface+' · '+age));
  if(age==='Daha önce işlem gördü')root.append(guideElement('p','Önceki ürünü belirleyin; temizleyicileri karıştırmayın. İşlem bilinmiyorsa uzmana danışın.','recipe-condition'));
  if(age==='Kurudu / bekledi')root.append(guideElement('p','Kurumuş lekeyi ovalamayın; ön işlem süresini etikete göre belirleyin, dozu artırmayın.','recipe-condition'));
@@ -113,7 +114,26 @@ function renderFinderRecommendation(surface, stain, age) {
   panel.replaceChildren();
   const allowed=!care||['wet','W','WS'].includes(care.value);
   if(allowed){
-   const steps=surface==='Kıyafet' ? (key==='Yağ' ? ['Fazla yağı bezle alın.', 'Yıkanabilir giyside kumaşa uygun sıvı deterjan veya ön işlem ürünü uygulayın.', 'Bakım etiketine göre yıkayın; leke çıkmadan makinede kurutmayın.'] : ['Yıkanabilir giyside lekeyi serin suyla durulayın.', 'Kumaşa uygun ön işlem ürünü uygulayıp bakım etiketine göre yıkayın.', 'Leke çıkmadan kurutma makinesini kullanmayın.']) : surface==='Halı' ? ['Fazlalığı beyaz bezle dıştan içe tamponlayarak alın.', 'Bu halıya ve leke türüne uygun noktasal temizleyiciyi etiketine göre uygulayın.', 'Ürün talimatına göre kalıntıyı giderin; tabanı aşırı ıslatmayın.'] : ['Fazlalığı beyaz, emici bezle alın.', 'W kodunda su bazlı; W-S kodunda üreticinin onayladığı, lekeye uygun döşeme ürünü kullanın.', 'Ürünü beze az miktarda alıp tamponlayın; dolguyu ıslatmayın.'];
+   const clothing={
+    'Kahve':['Serin suyla durulayın veya kısa süre serin suda bekletin.','Kumaşa uygun sıvı deterjan veya ön işlem ürünü uygulayın.','Bakım etiketine göre yıkayın; leke çıkmadan ısıyla kurutmayın.'],
+    'Çay':['Serin suyla durulayın.','Kumaşa uygun ön yıkama ürünüyle işlem uygulayın.','Etikete göre yıkayın; leke kalırsa makinede kurutmayın.'],
+    'Yağ':['Fazla yağı bezle alın.','Kumaşa uygun sıvı çamaşır deterjanı veya ön işlem ürünü uygulayın.','Bakım etiketine göre yıkayın; leke çıkmadan makinede kurutmayın.'],
+    'Kan':['Taze lekeyi soğuk suyla durulayın; sıcak su kullanmayın.','Kurumuş lekede kumaşa uygun enzimli ön işlem ürününün talimatını izleyin.','Bakım etiketine göre yıkayın; leke çıkmadan kurutmayın.'],
+    'Çamur':['Çamurun kurumasını bekleyin, gevşek kalıntıyı nazikçe fırçalayın.','Kumaşa uygun sıvı deterjanla ön işlem uygulayın.','Bakım etiketine göre yıkayın.'],
+    'Mürekkep':['Lekenin altına beyaz kâğıt havlu yerleştirin.','Mürekkebe ve kumaşa uygun ürünü küçük alanda deneyip etikete göre tamponlayın; havluyu değiştirin.','Talimatına göre durulayıp yıkayın; rastgele aseton veya kolonya kullanmayın.'],
+    'Çikolata':['Fazla çikolatayı kumaşa yaymadan nazikçe alın.','Kumaşa uygun enzimli ön işlem ürünüyle etiketine göre işlem uygulayın.','Bakım etiketine göre yıkayın; lekeyi kontrol edin.'],
+    'Domates sosu':['Fazla sosu alın, lekenin arkasından serin suyla durulayın.','Kumaşa uygun ön yıkama leke çıkarıcı uygulayın.','Bakım etiketine göre yıkayın; leke kalırsa kurutmayın.'],
+    'Meyve suyu':['Fazla sıvıyı emdirin.','Kumaşa uygun enzimli ön işlem ürününün bekletme talimatını izleyin.','Bakım etiketine göre yıkayıp lekeyi kontrol edin.'],
+    'Çimen':['Kumaşa uygun enzimli ön işlem ürünü seçin.','Ürünün etiketindeki süre ve miktarla ön işlem uygulayın.','Bakım etiketine göre yıkayın; leke kalırsa kurutmadan değerlendirin.'],
+    'Ruj':['Fazla ruju yaymadan nazikçe alın.','Kumaşa uygun ön yıkama ürünü veya sıvı deterjanla ön işlem uygulayın.','Etikete göre yıkayın; hassas kumaşta uzman görüşü alın.'],
+    'Fondöten':['Fazla ürünü kumaşa yedirmeden alın.','Kumaşa uygun ön yıkama ürünü veya sıvı deterjan uygulayın.','Bakım etiketine göre yıkayıp izi kontrol edin.'],
+    'Ter':['Kumaşa uygun ön yıkama ürünüyle işlem uygulayın.','Kalıntı sürerse yalnızca etiket izin veriyorsa enzimli ürün veya oksijen bazlı ağartıcı değerlendirin.','Bakım etiketine göre yıkayıp iyice durulayın.'],
+    'Deodorant':['Hafif kalıntıda kumaşa uygun sıvı deterjanla ön işlem uygulayın.','Yoğun kalıntıda ön yıkama ürününün etiketindeki bekleme süresini izleyin.','Bakım etiketine göre yıkayın; ağartıcıyı yalnızca etiket izin veriyorsa değerlendirin.'],
+    'Sakız':['Buzu kapalı bir poşet içinde uygulayarak sakızı sertleştirin.','Sertleşen fazlalığı kumaşı zedelemeden küt bir kenarla kaldırın.','Kalan izde kumaşa uygun ön işlem ürünü kullanıp etiketine göre yıkayın.'],
+    'Mum':['Mumun sertleşmesini bekleyin.','Fazlalığı kumaşı zedelemeden küt bir kenarla kaldırın.','Kalan yağlı veya renkli iz için kumaşa uygun ön işlem ürünü kullanın; rastgele ütü veya solvent uygulamayın.']
+   };
+   const first=stain==='Çamur'?'Çamurun kurumasını bekleyip gevşek kalıntıyı bakım talimatına göre alın.':['Sakız','Mum'].includes(stain)?'Sertleşmiş fazlalığı lifleri çekmeden nazikçe kaldırın; zorlanıyorsa durdurun.':'Fazlalığı beyaz bezle tamponlayın; lekeyi ovalamayın.';
+   const steps=surface==='Kıyafet'?clothing[stain]:[first, surface==='Halı'?'Bu halıya ve leke türüne uygun noktasal temizleyiciyi etiketine göre kullanın.':'W kodunda su bazlı; W-S kodunda üreticinin izin verdiği ve lekeye uygun döşeme ürünü seçin.', 'Görünmeyen alanda deneyin; kalıntı giderme talimatını izleyin ve yüzeyi aşırı ıslatmayın.'];
    const list=guideElement('ol');steps.forEach(step=>list.append(guideElement('li',step)));panel.append(list);
    panel.append(guideElement('p',surface==='Kıyafet'?'Bakım ve ürün etiketini esas alın; yün, ipek ve kuru temizleme isteyen giysiler için özel bakım gerekir.':'Önce görünmeyen alanda deneyin. Renk veya doku değişirse durdurun; hassas liflerde üretici talimatını esas alın.','recipe-condition'));
   }else{
